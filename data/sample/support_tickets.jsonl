@@ -1,0 +1,10 @@
+{"created_ts": "2026-01-02T14:29:59Z", "customer_id": "cus_70545a1f7e4e53", "issue_type": "return_request", "order_id": "ord_c16ae2316bef50", "priority": "low", "status": "pending", "ticket_id": "tic_b3c035458e8352"}
+{"created_ts": "2026-01-07T22:18:29Z", "customer_id": "cus_e43d368815f950", "issue_type": "damaged_item", "order_id": "ord_5428ca36dc635b", "priority": "low", "status": "open", "ticket_id": "tic_7024c1be5d8552"}
+{"created_ts": "2026-01-08T15:43:49Z", "customer_id": "cus_a1aaf132410b59", "issue_type": "wrong_item", "order_id": "ord_4371a54b44075d", "priority": "low", "status": "pending", "ticket_id": "tic_d0c0d0b5db3a56"}
+{"created_ts": "2026-01-03T14:23:02Z", "customer_id": "cus_efd27bac4e9659", "issue_type": "late_delivery", "order_id": "ord_768a96edd12d53", "priority": "low", "status": "open", "ticket_id": "tic_dc80e03581685f"}
+{"created_ts": "2026-01-08T13:52:36Z", "customer_id": "cus_a96a38bbdd1855", "issue_type": "damaged_item", "order_id": "ord_4308d82895215a", "priority": "low", "status": "pending", "ticket_id": "tic_b98c91c243515c"}
+{"created_ts": "2026-01-03T03:08:10Z", "customer_id": "cus_2bc3b98e0bd55c", "issue_type": "payment_issue", "order_id": "ord_7277e2b1bf535c", "priority": "high", "status": "resolved", "ticket_id": "tic_24520ee146ec5e"}
+{"created_ts": "2026-01-10T22:52:30Z", "customer_id": "cus_e2479c533f7f5e", "issue_type": "damaged_item", "order_id": "ord_36731934cc7c5b", "priority": "low", "status": "open", "ticket_id": "tic_3ebd8e85e45c5b"}
+{"created_ts": "2026-01-06T15:00:08Z", "customer_id": "cus_cfa1ce9173815e", "issue_type": "wrong_item", "order_id": "ord_f01c05b6bcab5f", "priority": "medium", "status": "open", "ticket_id": "tic_eaad3070b51250"}
+{"created_ts": "2026-01-08T21:55:56Z", "customer_id": "cus_b7b31bbbd2d955", "issue_type": "return_request", "order_id": "ord_f97a2ffcd65e5e", "priority": "high", "status": "pending", "ticket_id": "tic_4c8c350ff8c355"}
+{"created_ts": "2026-01-11T03:48:09Z", "customer_id": "cus_5bfc484abdf45a", "issue_type": "return_request", "order_id": "ord_3c36bb43de3357", "priority": "low", "status": "resolved", "ticket_id": "tic_2089be3398a958"}

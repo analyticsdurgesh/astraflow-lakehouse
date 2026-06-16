@@ -1,0 +1,87 @@
+services:
+  redpanda:
+    image: redpandadata/redpanda:v24.3.5
+    command:
+      - redpanda
+      - start
+      - --overprovisioned
+      - --smp
+      - "1"
+      - --memory
+      - 1G
+      - --reserve-memory
+      - 0M
+      - --node-id
+      - "0"
+      - --check=false
+      - --kafka-addr
+      - internal://0.0.0.0:9092,external://0.0.0.0:19092
+      - --advertise-kafka-addr
+      - internal://redpanda:9092,external://localhost:19092
+    ports:
+      - "19092:19092"
+      - "9644:9644"
+    healthcheck:
+      test: ["CMD", "rpk", "cluster", "health"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  console:
+    image: redpandadata/console:v2.8.3
+    depends_on:
+      redpanda:
+        condition: service_healthy
+    environment:
+      KAFKA_BROKERS: redpanda:9092
+    ports:
+      - "8085:8080"
+
+  minio:
+    image: quay.io/minio/minio:RELEASE.2025-01-20T14-49-07Z
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-astraflow}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-astraflow123}
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio-data:/data
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-astraflow}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-astraflow}
+      POSTGRES_DB: ${POSTGRES_DB:-astraflow_metadata}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  api:
+    build: .
+    depends_on:
+      - postgres
+    environment:
+      ASTRAFLOW_WAREHOUSE_DB: /app/data/warehouse/astraflow.duckdb
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+    command: uvicorn astraflow.api:app --host 0.0.0.0 --port 8080 --reload
+
+  dashboard:
+    build: .
+    environment:
+      ASTRAFLOW_WAREHOUSE_DB: /app/data/warehouse/astraflow.duckdb
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+    command: streamlit run src/astraflow/dashboard.py --server.address 0.0.0.0 --server.port 8501
+
+volumes:
+  minio-data:
+  postgres-data:

@@ -1,0 +1,7 @@
+astraflow:
+  target: local
+  outputs:
+    local:
+      type: duckdb
+      path: "{{ env_var('ASTRAFLOW_WAREHOUSE_DB', '../../data/warehouse/astraflow.duckdb') }}"
+      threads: 4

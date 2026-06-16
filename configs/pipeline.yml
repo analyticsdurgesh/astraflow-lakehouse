@@ -1,0 +1,32 @@
+project:
+  name: astraflow-lakehouse
+  environment: local
+
+paths:
+  raw: data/raw
+  lake: data/lake
+  warehouse: data/warehouse/astraflow.duckdb
+  quality_report: reports/quality_report.json
+
+kafka:
+  bootstrap_servers: localhost:19092
+  topic_prefix: astraflow
+  topics:
+    orders: astraflow.orders
+    order_items: astraflow.order_items
+    payments: astraflow.payments
+    shipments: astraflow.shipments
+    clickstream_events: astraflow.clickstream_events
+    inventory_snapshots: astraflow.inventory_snapshots
+    support_tickets: astraflow.support_tickets
+
+quality:
+  max_payment_failure_rate: 0.20
+  max_delivery_sla_breach_rate: 0.35
+  max_late_event_minutes: 1440
+  min_orders_per_day: 100
+
+service_level_objectives:
+  freshness_minutes: 15
+  warehouse_build_minutes: 5
+  api_p95_latency_ms: 250

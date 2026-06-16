@@ -1,0 +1,12 @@
+flowchart LR
+    G[Data Generator] --> RAW[Raw JSONL/CSV]
+    G --> K[Redpanda Topics]
+    K --> S[Spark Structured Streaming]
+    RAW --> Q[Quality Gates]
+    S --> B[Bronze Parquet]
+    B --> SI[Silver Tables]
+    SI --> GO[Gold Marts]
+    GO --> D[(DuckDB)]
+    D --> API[FastAPI]
+    D --> DASH[Streamlit]
+    GO --> DBT[dbt Docs and Models]

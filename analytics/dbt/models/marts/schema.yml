@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: gold_revenue_daily
+    description: Daily executive revenue mart.
+    columns:
+      - name: order_date
+        tests:
+          - not_null
+          - unique
+      - name: revenue
+        tests:
+          - not_null
+
+  - name: gold_product_velocity
+    description: Product-level sales velocity and margin mart.
+    columns:
+      - name: sku
+        tests:
+          - not_null
+      - name: net_item_revenue
+        tests:
+          - not_null
+
+  - name: gold_customer_ltv
+    description: Customer lifetime value mart.
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
+      - name: lifetime_value
+        tests:
+          - not_null

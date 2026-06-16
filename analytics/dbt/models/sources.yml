@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: main
+    description: Raw tables loaded into DuckDB from generated files.
+    tables:
+      - name: raw_customers
+      - name: raw_products
+      - name: raw_orders
+      - name: raw_order_items
+      - name: raw_payments
+      - name: raw_shipments
+      - name: raw_clickstream_events
+      - name: raw_inventory_snapshots
+      - name: raw_support_tickets

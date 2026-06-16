@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "astraflow-lakehouse"
+version = "0.1.0"
+description = "Production-style real-time data engineering lakehouse project with synthetic data generation."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Durgesh Yadav" }
+]
+keywords = ["data-engineering", "lakehouse", "kafka", "spark", "duckdb", "dbt", "fastapi", "streamlit"]
+dependencies = [
+  "duckdb>=1.1.3",
+  "fastapi>=0.115.0",
+  "uvicorn[standard]>=0.32.0",
+  "pydantic>=2.8.0",
+  "pyyaml>=6.0.2",
+  "streamlit>=1.39.0",
+  "confluent-kafka>=2.6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "ruff>=0.7.0",
+  "pytest>=8.3.0",
+]
+spark = [
+  "pyspark>=3.5.0",
+]
+dbt = [
+  "dbt-core>=1.8.0",
+  "dbt-duckdb>=1.8.0",
+]
+all = [
+  "ruff>=0.7.0",
+  "pytest>=8.3.0",
+  "pyspark>=3.5.0",
+  "dbt-core>=1.8.0",
+  "dbt-duckdb>=1.8.0",
+]
+
+[project.scripts]
+astraflow-generate = "astraflow.generator:main"
+astraflow-quality = "astraflow.quality:main"
+astraflow-warehouse = "astraflow.warehouse:main"
+astraflow-produce = "astraflow.producer:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]

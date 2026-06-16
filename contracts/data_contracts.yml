@@ -1,0 +1,126 @@
+version: 1
+owner: data-platform
+project: astraflow-lakehouse
+
+datasets:
+  customers:
+    file: customers.csv
+    primary_key: customer_id
+    required:
+      - customer_id
+      - signup_ts
+      - country
+      - city
+      - segment
+      - acquisition_channel
+
+  products:
+    file: products.csv
+    primary_key: sku
+    required:
+      - sku
+      - category
+      - brand
+      - unit_price
+      - margin_percent
+      - supplier_region
+
+  orders:
+    file: orders.jsonl
+    primary_key: order_id
+    required:
+      - order_id
+      - customer_id
+      - order_ts
+      - channel
+      - status
+      - currency
+      - subtotal
+      - discount
+      - shipping_fee
+      - tax
+      - total_amount
+      - campaign_id
+      - device_type
+    allowed_status:
+      - created
+      - paid
+      - shipped
+      - delivered
+      - cancelled
+      - returned
+
+  order_items:
+    file: order_items.jsonl
+    primary_key: order_item_id
+    required:
+      - order_item_id
+      - order_id
+      - sku
+      - quantity
+      - unit_price
+      - gross_amount
+      - discount_amount
+
+  payments:
+    file: payments.jsonl
+    primary_key: payment_id
+    required:
+      - payment_id
+      - order_id
+      - payment_ts
+      - method
+      - status
+      - amount
+      - risk_score
+
+  shipments:
+    file: shipments.jsonl
+    primary_key: shipment_id
+    required:
+      - shipment_id
+      - order_id
+      - warehouse_id
+      - shipped_ts
+      - delivered_ts
+      - carrier
+      - delivery_status
+      - promised_days
+
+  clickstream_events:
+    file: clickstream_events.jsonl
+    primary_key: event_id
+    required:
+      - event_id
+      - event_ts
+      - customer_id
+      - session_id
+      - event_type
+      - sku
+      - campaign_id
+      - device_type
+      - page_latency_ms
+
+  inventory_snapshots:
+    file: inventory_snapshots.jsonl
+    primary_key: snapshot_id
+    required:
+      - snapshot_id
+      - snapshot_ts
+      - sku
+      - warehouse_id
+      - on_hand
+      - reorder_point
+      - inbound_qty
+
+  support_tickets:
+    file: support_tickets.jsonl
+    primary_key: ticket_id
+    required:
+      - ticket_id
+      - order_id
+      - customer_id
+      - created_ts
+      - issue_type
+      - priority
+      - status

@@ -1,0 +1,120 @@
+from __future__ import annotations
+
+DATASET_FILES = {
+    "customers": "customers.csv",
+    "products": "products.csv",
+    "orders": "orders.jsonl",
+    "order_items": "order_items.jsonl",
+    "payments": "payments.jsonl",
+    "shipments": "shipments.jsonl",
+    "clickstream_events": "clickstream_events.jsonl",
+    "inventory_snapshots": "inventory_snapshots.jsonl",
+    "support_tickets": "support_tickets.jsonl",
+}
+
+PRIMARY_KEYS = {
+    "customers": "customer_id",
+    "products": "sku",
+    "orders": "order_id",
+    "order_items": "order_item_id",
+    "payments": "payment_id",
+    "shipments": "shipment_id",
+    "clickstream_events": "event_id",
+    "inventory_snapshots": "snapshot_id",
+    "support_tickets": "ticket_id",
+}
+
+REQUIRED_FIELDS = {
+    "customers": [
+        "customer_id",
+        "signup_ts",
+        "country",
+        "city",
+        "segment",
+        "acquisition_channel",
+    ],
+    "products": [
+        "sku",
+        "category",
+        "brand",
+        "unit_price",
+        "margin_percent",
+        "supplier_region",
+    ],
+    "orders": [
+        "order_id",
+        "customer_id",
+        "order_ts",
+        "channel",
+        "status",
+        "currency",
+        "subtotal",
+        "discount",
+        "shipping_fee",
+        "tax",
+        "total_amount",
+        "campaign_id",
+        "device_type",
+    ],
+    "order_items": [
+        "order_item_id",
+        "order_id",
+        "sku",
+        "quantity",
+        "unit_price",
+        "gross_amount",
+        "discount_amount",
+    ],
+    "payments": [
+        "payment_id",
+        "order_id",
+        "payment_ts",
+        "method",
+        "status",
+        "amount",
+        "risk_score",
+    ],
+    "shipments": [
+        "shipment_id",
+        "order_id",
+        "warehouse_id",
+        "shipped_ts",
+        "delivered_ts",
+        "carrier",
+        "delivery_status",
+        "promised_days",
+    ],
+    "clickstream_events": [
+        "event_id",
+        "event_ts",
+        "customer_id",
+        "session_id",
+        "event_type",
+        "sku",
+        "campaign_id",
+        "device_type",
+        "page_latency_ms",
+    ],
+    "inventory_snapshots": [
+        "snapshot_id",
+        "snapshot_ts",
+        "sku",
+        "warehouse_id",
+        "on_hand",
+        "reorder_point",
+        "inbound_qty",
+    ],
+    "support_tickets": [
+        "ticket_id",
+        "order_id",
+        "customer_id",
+        "created_ts",
+        "issue_type",
+        "priority",
+        "status",
+    ],
+}
+
+ORDER_STATUSES = {"created", "paid", "shipped", "delivered", "cancelled", "returned"}
+PAYMENT_STATUSES = {"authorized", "captured", "failed", "refunded"}
+DELIVERY_STATUSES = {"pending", "in_transit", "delivered", "delayed", "returned"}

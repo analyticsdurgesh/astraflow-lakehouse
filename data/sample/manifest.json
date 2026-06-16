@@ -1,0 +1,18 @@
+{
+  "counts": {
+    "clickstream_events": 500,
+    "customers": 120,
+    "inventory_snapshots": 200,
+    "order_items": 250,
+    "orders": 100,
+    "payments": 100,
+    "products": 25,
+    "shipments": 78,
+    "support_tickets": 10
+  },
+  "days": 2,
+  "orders_per_day": 50,
+  "project": "astraflow-lakehouse",
+  "seed": 7,
+  "start_date": "2026-01-01"
+}
