@@ -78,7 +78,7 @@ flowchart LR
 ## Quickstart
 
 ```bash
-git clone https://github.com/durgeshyadav1998/astraflow-lakehouse.git
+git clone https://github.com/analyticsdurgesh/astraflow-lakehouse.git
 cd astraflow-lakehouse
 
 python3.11 -m venv .venv
